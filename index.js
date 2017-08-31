@@ -66,6 +66,7 @@ $(document).ready(function(){
 
 	function AddressSelect(place) {
 		console.log(place);
+		//array is not always in the same order will need to find other ways of determining appropriate fields
 		console.log("street address: ",place.address_components[0].long_name+' '+place.address_components[1].long_name);
 	    console.log("city: ",place.address_components[2].long_name);
 	    console.log("state: ",place.address_components[4].long_name);
