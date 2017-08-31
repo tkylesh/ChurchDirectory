@@ -36,6 +36,7 @@ $(document).ready(function(){
 	  google.maps.event.addListener(autocomplete, 'place_changed', function() {
 	    infowindow.close();
 	    var place = autocomplete.getPlace();
+	    //process Address Selection
 	    AddressSelect(place);
 	    if (!place.geometry) {
 	      return;
@@ -68,6 +69,11 @@ $(document).ready(function(){
 		console.log("street address: ",place.address_components[0].long_name+' '+place.address_components[1].long_name);
 	    console.log("city: ",place.address_components[2].long_name);
 	    console.log("state: ",place.address_components[4].long_name);
-	    console.log("zip code: ",place.address_components[6].long_name);		
+	    console.log("zip code: ",place.address_components[6].long_name);	
+
+	    $('#street_address').val(place.address_components[0].long_name+' '+place.address_components[1].long_name);
+	    $('#city').val(place.address_components[2].long_name);
+	    $('#state').val(place.address_components[4].long_name);
+	    $('#zip_code').val(place.address_components[6].long_name);
 	}
 });
