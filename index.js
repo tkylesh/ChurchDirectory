@@ -11,9 +11,13 @@ $(document).ready(function(){
 
         var input = document.getElementById('address_autocomplete');
 
+        //limits autocomplete options to us
+         var options = {
+  			componentRestrictions: {country: "us"}
+ 		};
        //Create the autocomplete helper, and associate it with
 	  //an HTML text input box.
-	  var autocomplete = new google.maps.places.Autocomplete(input);
+	  var autocomplete = new google.maps.places.Autocomplete(input,options);
 
 	  autocomplete.bindTo('bounds', map);
 
@@ -32,8 +36,7 @@ $(document).ready(function(){
 	  google.maps.event.addListener(autocomplete, 'place_changed', function() {
 	    infowindow.close();
 	    var place = autocomplete.getPlace();
-	    console.log(place);
-	    // console.log("street address: ",place.address_component[0].long_name+' '+place.address_component[1].long_name);
+	    AddressSelect(place);
 	    if (!place.geometry) {
 	      return;
 	    }
@@ -60,4 +63,11 @@ $(document).ready(function(){
 	// Run the initialize function when the window has finished loading.
 	initialize();
 
+	function AddressSelect(place) {
+		console.log(place);
+		console.log("street address: ",place.address_components[0].long_name+' '+place.address_components[1].long_name);
+	    console.log("city: ",place.address_components[2].long_name);
+	    console.log("state: ",place.address_components[4].long_name);
+	    console.log("zip code: ",place.address_components[6].long_name);		
+	}
 });
