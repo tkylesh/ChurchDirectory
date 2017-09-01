@@ -1,7 +1,7 @@
 $(document).ready(function(){
   //intialize google map and add text input and autocomplete
 	var map;
-
+	var memberCount = 0; //reset memberCount when program reloads
 	function initialize() {
 
         map = new google.maps.Map(document.getElementById('map'), {
@@ -78,4 +78,46 @@ $(document).ready(function(){
 	    $('#state').val(state);
 	    $('#zip_code').val(zip);
 	}
+
+	
+	var memberSection = $('#AddFamilyMember');
+	//write a function that injects new family member cards into dom
+	function addNewFamilyMember() {
+		memberCount++;
+		console.log(memberCount);
+		memberSection.append(`<div class="col-sm-4" id="member--${memberCount}>
+				<div class="card">
+					<div class="card-header">Family Member</div>
+					<div class="card-main">
+						<form>
+						  <div class="form-group">
+						    <label class="radio-inline">
+							  <input type="radio" name="inlineRadioOptions" id="AdultStatus--${memberCount}" value="Adult"> adult
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" name="inlineRadioOptions" id="AdultStatus--${memberCount}" value="Child"> child
+							</label>
+						  </div>
+						  <div class="form-group">
+						    <label for="city">Name</label>
+						    <input type="text" class="form-control" id="name--${memberCount}" placeholder="Nashville">
+						  </div>
+						  <div class="form-group">
+						    <label for="state">Birthday</label>
+						    <input type="text" class="form-control" id="birthday--${memberCount}" placeholder="TN">
+						  </div>
+						  <div class="form-group">
+						    <label for="zip_code">Cell Phone #</label>
+						    <input type="text" class="form-control" id="cell_phone--${memberCount}" placeholder="37206">
+						  </div>
+						</form>
+					</div>
+				</div>
+			</div>`);
+	}
+	addNewFamilyMember();
+
+	$('#addMember').click(function(){
+		addNewFamilyMember();
+	});
 });

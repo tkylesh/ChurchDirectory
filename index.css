@@ -1,5 +1,5 @@
 .card{
-	width: 95%;                 /* Set width of cards */
+	width: 100%;                 /* Set width of cards */
   	border: 1px solid #A9A9A9;    /* Set up Border */
   	border-radius: 4px;           /* Slightly Curve edges */
   	margin: 15px auto;
