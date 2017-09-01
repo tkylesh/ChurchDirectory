@@ -120,4 +120,9 @@ $(document).ready(function(){
 	$('#addMember').click(function(){
 		addNewFamilyMember();
 	});
+
+	//write a function to build family json object and write to text file
+	function saveFamily() {
+		
+	}
 });
