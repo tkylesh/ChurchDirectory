@@ -120,4 +120,18 @@ $(document).ready(function(){
 	$('#addMember').click(function(){
 		addNewFamilyMember();
 	});
+
+	//write a function to build family json object and write to text file
+	function saveFamily() {
+		var family = $("[id*='name']");
+		for(var i =0; i < family.length; i++)
+		{
+			console.log(family[i].value);
+		}
+	}
+
+	$('#save').click(function(){
+		alert('save button clicked!');
+		saveFamily();
+	});
 });
