@@ -65,16 +65,17 @@ $(document).ready(function(){
 	initialize();
 
 	function AddressSelect(place) {
-		console.log(place);
-		//array is not always in the same order will need to find other ways of determining appropriate fields
-		console.log("street address: ",place.address_components[0].long_name+' '+place.address_components[1].long_name);
-	    console.log("city: ",place.address_components[2].long_name);
-	    console.log("state: ",place.address_components[4].long_name);
-	    console.log("zip code: ",place.address_components[6].long_name);	
+		//console.log(place);
+	    var address_array = place.formatted_address.split(',');
+	    var statezip_array = address_array[2].split(' ');
+	    console.log('statezip', statezip_array);
+	    var state = statezip_array[1];
+	    var zip = statezip_array[2];
 
-	    $('#street_address').val(place.address_components[0].long_name+' '+place.address_components[1].long_name);
-	    $('#city').val(place.address_components[2].long_name);
-	    $('#state').val(place.address_components[4].long_name);
-	    $('#zip_code').val(place.address_components[6].long_name);
+	    console.log('array', address_array);
+	    $('#street_address').val(address_array[0]);
+	    $('#city').val(address_array[1]);
+	    $('#state').val(state);
+	    $('#zip_code').val(zip);
 	}
 });
